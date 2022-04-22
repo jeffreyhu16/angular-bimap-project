@@ -1,0 +1,33 @@
+<div class="search-grid-container">
+    <form class="filter-form">
+        <div class="filter-form-input">
+            <kendo-label [for]="startDate">起始時間</kendo-label>
+            <kendo-datepicker
+                kendoTextBox
+                #startDate
+                [(value)]="defaultDate"
+                class="input-startdate"
+            >
+            </kendo-datepicker>
+        </div>
+        <div class="filter-form-input">
+            <kendo-label [for]="endDate">結束時間</kendo-label>
+            <kendo-datepicker
+                kendoTextBox
+                #endDate
+                [(value)]="defaultDate"
+                class="input-enddate"
+            >
+            </kendo-datepicker>
+        </div>
+        <div class="filter-form-input">
+            <kendo-label [for]="ip">IP</kendo-label>
+            <input kendoTextBox #ip class="input-ip">
+        </div>
+        <div class="filter-form-input">
+            <kendo-label [for]="keyword">關鍵字</kendo-label>
+            <input kendoTextBox #keyword class="input-keyword">
+        </div>
+        <button kendoButton class="filter-form-button">Search</button>
+    </form>
+</div>

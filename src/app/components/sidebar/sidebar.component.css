@@ -1,0 +1,37 @@
+.sidebar {
+    position: fixed;
+    top: 2vh;
+    left: 1rem;
+    width: 14.5rem;
+    height: 96vh;
+    color: #fff;
+    padding: 1em;
+    border-radius: 10px;
+    transform: translateX(-15.5rem);
+    transition-duration: 200ms;
+    background-color: #42424a;
+}
+
+.sidebar-title-group {
+    justify-content: space-between;
+}
+
+.sidebar-title {
+    margin-bottom: 0.6em;
+}
+
+.sidebar-list {
+    list-style: none;
+    cursor: pointer;
+    padding-left: 0.5em;
+    font-size: 1.4rem;
+}
+
+.sidebar-list-item {
+    margin-bottom: 0.5em;
+}
+
+.sidebar-shift {
+    transform: translateX(0);
+    transition-duration: 200ms;
+}

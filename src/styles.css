@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.icon-decor {
+    width: 2rem;
+    height: 2rem;
+    color: #fff;
+    border-radius: 10px;
+    justify-content: center;
+    background-color: #42424a;
+}
+

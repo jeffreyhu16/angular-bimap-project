@@ -1,0 +1,56 @@
+<app-sidebar [isShift]="isShift"></app-sidebar>
+<nav [ngClass]="{ 'navbar-shift': isShift }" class="navbar flex">
+    <div class="navbar-left-container flex">
+        <fa-icon 
+            [icon]="faBars"
+            (click)="initShift()" 
+            class="icon-navbar icon-decor flex"
+            >
+        </fa-icon>
+        <h1 
+            [ngStyle]="{ display: isShift ? 'none' : 'inline' }" 
+            class="navbar-title"
+        >
+        History Discover
+        </h1>
+    </div>
+    <div class="navbar-right-container flex">
+        <fa-icon 
+            [icon]="faGrip" 
+            (click)="setIsPop()" 
+            class="icon-grip icon-decor flex"
+            >
+        </fa-icon>
+        <fa-icon 
+            [icon]="faShare" 
+            class="icon-share icon-decor flex"
+            >
+        </fa-icon>
+        <div class="popup-nav flex" [ngClass]="{ 'show-popup': isPop }">
+            <div class="popup-nav-category flex">
+                <fa-icon [icon]="faSquare" class="popup-nav-icon"></fa-icon>
+                <span class="popup-nav-cat-name">History Discover</span>
+            </div>
+            <div class="popup-nav-category flex">
+                <fa-icon [icon]="faSquare" class="popup-nav-icon"></fa-icon>
+                <span class="popup-nav-cat-name">Report</span>
+            </div>
+            <div class="popup-nav-category flex">
+                <fa-icon [icon]="faSquare" class="popup-nav-icon"></fa-icon>
+                <span class="popup-nav-cat-name">Rule Engine</span>
+            </div>
+            <div class="popup-nav-category flex">
+                <fa-icon [icon]="faSquare" class="popup-nav-icon"></fa-icon>
+                <span class="popup-nav-cat-name">Logger</span>
+            </div>
+            <div class="popup-nav-category flex">
+                <fa-icon [icon]="faSquare" class="popup-nav-icon"></fa-icon>
+                <span class="popup-nav-cat-name">Warroom</span>
+            </div>
+            <div class="popup-nav-category flex">
+                <fa-icon [icon]="faSquare" class="popup-nav-icon"></fa-icon>
+                <span class="popup-nav-cat-name">xxx</span>
+            </div>
+        </div>
+    </div>
+</nav>
