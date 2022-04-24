@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { 
-    faBars, 
+import { MODULES } from 'src/app/models/sidebar-meu-items';
+import {
+    faBars,
     faGrip,
-    faSquareFull, 
-    faShareFromSquare 
+    faSquareFull,
+    faShareFromSquare
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -15,13 +16,15 @@ export class NavbarComponent implements OnInit {
 
     @Input() isShift!: boolean;
     @Input() setShift!: () => void;
-    @Output() shift = new EventEmitter();
+    @Output() shiftNav = new EventEmitter();
 
     faBars = faBars;
     faGrip = faGrip;
     faSquare = faSquareFull;
     faShare = faShareFromSquare;
     isPop: boolean = true;
+    modules = MODULES;
+    module: any = MODULES[1];
 
     constructor() { }
 
@@ -34,6 +37,10 @@ export class NavbarComponent implements OnInit {
 
     initShift(): void {
         this.setShift();
-        this.shift.emit();
+        this.shiftNav.emit();
+    }
+
+    setModule(module: any): void {
+        this.module = module;
     }
 }

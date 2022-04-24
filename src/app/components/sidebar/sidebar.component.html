@@ -1,16 +1,36 @@
 <aside [ngClass]="{ 'sidebar-shift': isShift }" class="sidebar">
-    <div class="sidebar-title-group flex">
-        <h1 class="sidebar-title">History Discover</h1>
+    <div class="sidebar-title-group">
+        <h1 class="sidebar-title">{{ module.text }}</h1>
     </div>
-    <ul class="sidebar-list">
-        <li class="sidebar-list-item">
-            <span>Discover</span>
-        </li>
-        <li class="sidebar-list-item">
-            <span>Other P1</span>
-        </li>
-        <li class="sidebar-list-item">
-            <span>Other P2</span>
+    <ul *ngIf="menuItems[0].text; else standardList" class="sidebar-list">
+        <li 
+            *ngFor="let parentItem of menuItems" 
+            class="sidebar-list-item"
+            [ngClass]="{ 
+                'active-item': menuClickStatus[parentItem.id - 1] || menuClickStatus[parentItem.id - 2]
+            }"
+        >
+            <div class="sidebar-list-item-header flex" (click)="toggleShow(parentItem.id)">
+                <span>{{ parentItem.text }}</span>
+                <fa-icon [icon]="faArrow"></fa-icon>
+            </div>
+            <ul class="sidebar-list-nested">
+                <li *ngFor="let nestedItem of parentItem.items" class="sidebar-list-item-nested">
+                    <span>{{ nestedItem.text }}</span>
+                </li>
+            </ul>
+            <div 
+                class="nested-cover" 
+                [ngClass]="{ 'active-item': menuClickStatus[parentItem.id] }"
+            >
+        </div>
         </li>
     </ul>
+    <ng-template #standardList>
+        <ul class="sidebar-list">
+            <li *ngFor="let item of menuItems" class="sidebar-list-item">
+                <span class="sidebar-list-item-header">{{ item }}</span>
+            </li>
+        </ul>
+    </ng-template>
 </aside>

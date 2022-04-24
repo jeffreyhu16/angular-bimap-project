@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { HISTORY_DISCOVER, REPORT } from '../../models/sidebar-meu-items';
 
 @Component({
     selector: 'app-sidebar',
@@ -9,11 +10,42 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 export class SidebarComponent implements OnInit {
 
     @Input() isShift!: boolean;
+    @Input() module!: any;
     faBars = faBars;
+    faArrow = faCaretDown;
+    menuItems!: any[];
+    menuClickStatus!: any[];
 
     constructor() { }
 
-    ngOnInit(): void {
+    ngOnChanges(change: SimpleChanges) {
+        this.module = change['module'].currentValue;
+        this.matchModule();
     }
 
+    ngOnInit(): void {
+        this.matchModule();
+    }
+
+    matchModule(): void {
+        switch (this.module.value) {
+            case 'historyDiscover':
+                this.menuItems = HISTORY_DISCOVER;
+                break;
+            case 'report':
+                this.menuItems = REPORT;
+                this.assignClickStatus(this.menuItems);
+                break;
+            default:
+                console.log('no menu titles matched')
+        }
+    }
+
+    assignClickStatus(menuItems: any[]): void {
+        this.menuClickStatus = [...Array(menuItems.length)].fill(false);
+    }
+
+    toggleShow(id: number): void {
+        this.menuClickStatus[id] = !this.menuClickStatus[id];
+    }
 }
