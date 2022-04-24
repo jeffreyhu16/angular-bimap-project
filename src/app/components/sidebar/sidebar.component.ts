@@ -19,7 +19,13 @@ export class SidebarComponent implements OnInit {
     constructor() { }
 
     ngOnChanges(change: SimpleChanges) {
-        this.module = change['module'].currentValue;
+        for (let prop in change) {
+            if (prop === 'isShift') {
+                this.isShift = change['isShift'].currentValue;
+            } else {
+                this.module = change['module'].currentValue;
+            }
+        }
         this.matchModule();
     }
 
