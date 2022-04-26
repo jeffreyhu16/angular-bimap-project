@@ -30,4 +30,17 @@
         </div>
         <button kendoButton class="filter-form-button">Search</button>
     </form>
+    <div class="grid-table">
+        <kendo-grid 
+            [data]="gridData"
+            [pageable]="true"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            (pageChange)="pageChange($event)"
+        >
+            <kendo-grid-column field="date" title="時間"></kendo-grid-column>
+            <kendo-grid-column field="ip" title="IP"></kendo-grid-column>
+            <kendo-grid-column field="rawData" title="Raw Data"></kendo-grid-column>
+        </kendo-grid>
+    </div>
 </div>

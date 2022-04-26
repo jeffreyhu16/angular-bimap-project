@@ -1,6 +1,7 @@
 <header>
     <app-navbar [isShift]="isShift" [setShift]="setShift" (shiftNav)="setShift()"></app-navbar>
 </header>
-<main class="main" [ngClass]="{ 'main-shift': isShift }">   
-    <app-search-grid [isShift]="isShift"></app-search-grid>
+<main class="main" [ngClass]="{ 'main-shift': isShift }">
+    <router-outlet></router-outlet>
+    <!-- <app-search-grid></app-search-grid> -->
 </main>

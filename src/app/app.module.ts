@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LabelModule } from '@progress/kendo-angular-label';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { ReportComponent } from './components/report/report.component';
+
 
 
 
@@ -23,7 +26,8 @@ import { LabelModule } from '@progress/kendo-angular-label';
         AppComponent,
         NavbarComponent,
         SidebarComponent,
-        SearchGridComponent
+        SearchGridComponent,
+        ReportComponent
     ],
     imports: [
         BrowserModule,
@@ -35,7 +39,8 @@ import { LabelModule } from '@progress/kendo-angular-label';
         BrowserAnimationsModule,
         DateInputsModule,
         ButtonsModule,
-        LabelModule
+        LabelModule,
+        GridModule
     ],
     providers: [],
     bootstrap: [AppComponent]

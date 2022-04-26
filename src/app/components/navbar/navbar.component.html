@@ -14,7 +14,12 @@
         <fa-icon [icon]="faShare" class="icon-share icon-decor flex">
         </fa-icon>
         <div class="popup-nav flex" [ngClass]="{ 'show-popup': isPop }">
-            <div *ngFor="let module of modules" class="popup-nav-category flex" (click)="setModule(module)">
+            <div 
+                *ngFor="let module of modules" 
+                class="popup-nav-category flex" 
+                (click)="setModule(module)"
+                [routerLink]="['/', module.value]"
+            >
                 <fa-icon [icon]="faSquare" class="popup-nav-icon"></fa-icon>
                 <span class="popup-nav-cat-name">{{ module.text }}</span>
             </div>
