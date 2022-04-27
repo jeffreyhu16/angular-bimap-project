@@ -1,0 +1,19 @@
+<div class="main-container">
+    <h2 class="grid-table-title">儀表版來源設定</h2>
+    <div class="grid-table">
+        <kendo-grid 
+            [data]="gridData"
+            [pageable]="true"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            (pageChange)="pageChange($event)"
+        >
+            <kendo-grid-column field="alias" title="別名"></kendo-grid-column>
+            <kendo-grid-column field="ip" title="IP"></kendo-grid-column>
+            <kendo-grid-column field="type" title="類型"></kendo-grid-column>
+            <kendo-grid-column field="account" title="帳號"></kendo-grid-column>
+            <kendo-grid-column field="password" title="密碼"></kendo-grid-column>
+            <kendo-grid-column field="authenticate" title="驗證"></kendo-grid-column>
+        </kendo-grid>
+    </div>
+</div>

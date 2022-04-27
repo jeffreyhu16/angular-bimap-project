@@ -15,9 +15,12 @@
                 <fa-icon [icon]="faArrow"></fa-icon>
             </div>
             <ul class="sidebar-list-nested">
-                <li *ngFor="let nestedItem of parentItem.items" class="sidebar-list-item-nested">
+                <div 
+                    *ngFor="let nestedItem of parentItem.items" class="sidebar-list-item-nested"
+                    [routerLink]="['/', module.value, nestedItem.value]"
+                >
                     <span>{{ nestedItem.text }}</span>
-                </li>
+                </div>
             </ul>
             <div 
                 class="nested-cover" 

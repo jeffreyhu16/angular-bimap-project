@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { HISTORY_DISCOVER, REPORT } from '../../models/sidebar-meu-items';
+import { HISTORY_DISCOVER, REPORT } from '../../models/sidebar-menu-items';
 
 @Component({
     selector: 'app-sidebar',

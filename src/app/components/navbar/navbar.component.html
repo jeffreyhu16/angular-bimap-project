@@ -14,7 +14,7 @@
         <fa-icon [icon]="faShare" class="icon-share icon-decor flex">
         </fa-icon>
         <div class="popup-nav flex" [ngClass]="{ 'show-popup': isPop }">
-            <div 
+            <div
                 *ngFor="let module of modules" 
                 class="popup-nav-category flex" 
                 (click)="setModule(module)"

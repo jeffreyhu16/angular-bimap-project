@@ -1,0 +1,17 @@
+<div class="main-container">
+    <h2 class="grid-table-title">儀表版顯示設定</h2>
+    <div class="grid-table">
+        <kendo-grid 
+            [data]="gridData"
+            [pageable]="true"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            (pageChange)="pageChange($event)"
+        >
+            <kendo-grid-column field="server" title="Server"></kendo-grid-column>
+            <kendo-grid-column field="dashboard" title="儀表版"></kendo-grid-column>
+            <kendo-grid-column field="dashboardAlias" title="儀表版別名"></kendo-grid-column>
+            <kendo-grid-column field="groupName" title="群組名稱"></kendo-grid-column>
+        </kendo-grid>
+    </div>
+</div>

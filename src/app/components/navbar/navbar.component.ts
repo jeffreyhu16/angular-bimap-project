@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MODULES } from 'src/app/models/sidebar-meu-items';
+import { MODULES } from 'src/app/models/sidebar-menu-items';
 import {
     faBars,
     faGrip,
@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     faGrip = faGrip;
     faSquare = faSquareFull;
     faShare = faShareFromSquare;
-    isPop: boolean = true;
+    isPop: boolean = false;
     modules = MODULES;
     module: any = MODULES[1];
 

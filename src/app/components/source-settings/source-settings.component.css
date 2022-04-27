@@ -1,0 +1,12 @@
+.grid-table-title {
+    margin-bottom: 16px;
+    font-size: 24px;
+}
+
+.grid-table {
+    height: calc(100% - 49px);
+}
+
+.k-grid {
+    height: 100%;
+}
