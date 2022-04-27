@@ -42,5 +42,6 @@ export class NavbarComponent implements OnInit {
 
     setModule(module: any): void {
         this.module = module;
+        this.isPop = false;
     }
 }
