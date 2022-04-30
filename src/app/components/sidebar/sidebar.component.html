@@ -3,30 +3,17 @@
         <h1 class="sidebar-title">{{ module.text }}</h1>
     </div>
     <ul *ngIf="menuItems[0].text; else standardList" class="sidebar-list">
-        <li 
-            *ngFor="let parentItem of menuItems" 
-            class="sidebar-list-item"
-            [ngClass]="{ 
-                'active-item': menuClickStatus[parentItem.id - 1] || menuClickStatus[parentItem.id - 2]
-            }"
-        >
-            <div class="sidebar-list-item-header flex" (click)="toggleShow(parentItem.id)">
+        <li *ngFor="let parentItem of menuItems" class="sidebar-list-item">
+            <div class="sidebar-list-item-header flex" (click)="toggleSlide(parentItem.id)" >
                 <span>{{ parentItem.text }}</span>
                 <fa-icon [icon]="faArrow"></fa-icon>
             </div>
-            <ul class="sidebar-list-nested">
-                <div 
-                    *ngFor="let nestedItem of parentItem.items" class="sidebar-list-item-nested"
-                    [routerLink]="['/', module.value, nestedItem.value]"
-                >
+            <ul class="sidebar-list-nested" [ngClass]="{ 'active-submenu': menuClickStatus[parentItem.id] }">
+                <li *ngFor="let nestedItem of parentItem.items" class="sidebar-list-item-nested"
+                    [routerLink]="['/', module.value, nestedItem.value]">
                     <span>{{ nestedItem.text }}</span>
-                </div>
+                </li>
             </ul>
-            <div 
-                class="nested-cover" 
-                [ngClass]="{ 'active-item': menuClickStatus[parentItem.id] }"
-            >
-        </div>
         </li>
     </ul>
     <ng-template #standardList>
