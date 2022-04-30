@@ -2,22 +2,12 @@
     <form class="filter-form">
         <div class="filter-form-input">
             <kendo-label [for]="startDate">起始時間</kendo-label>
-            <kendo-datepicker
-                kendoTextBox
-                #startDate
-                [(value)]="defaultDate"
-                class="input-startdate"
-            >
+            <kendo-datepicker kendoTextBox #startDate [(value)]="defaultDate" class="input-startdate">
             </kendo-datepicker>
         </div>
         <div class="filter-form-input">
             <kendo-label [for]="endDate">結束時間</kendo-label>
-            <kendo-datepicker
-                kendoTextBox
-                #endDate
-                [(value)]="defaultDate"
-                class="input-enddate"
-            >
+            <kendo-datepicker kendoTextBox #endDate [(value)]="defaultDate" class="input-enddate">
             </kendo-datepicker>
         </div>
         <div class="filter-form-input">
@@ -31,16 +21,22 @@
         <button kendoButton class="filter-form-button">Search</button>
     </form>
     <div class="grid-table">
-        <kendo-grid 
-            [data]="gridData"
-            [pageable]="true"
-            [pageSize]="pageSize"
-            [skip]="skip"
-            (pageChange)="pageChange($event)"
-        >
+        <kendo-grid [data]="gridData" [loading]="loading" [pageable]="true" [sortable]="true" [pageSize]="pageSize"
+            [skip]="page" (pageChange)="pageChange($event)">
             <kendo-grid-column field="date" title="時間"></kendo-grid-column>
             <kendo-grid-column field="ip" title="IP"></kendo-grid-column>
             <kendo-grid-column field="rawData" title="Raw Data"></kendo-grid-column>
+
+            <ng-template kendoPagerTemplate let-totalPages="totalPages" let-currentPage="currentPage">
+                <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
+                <kendo-pager-numeric-buttons [buttonCount]="10"></kendo-pager-numeric-buttons>
+                <kendo-pager-next-buttons></kendo-pager-next-buttons>
+                <kendo-pager-page-sizes [pageSizes]="pageSizes"></kendo-pager-page-sizes>
+                <kendo-pager-info></kendo-pager-info>
+            </ng-template>
+            <kendo-grid-messages [pagerItemsPerPage]="'筆 / 頁'" [pagerItems]="'筆'"
+                [pagerOf]="'共'">
+            </kendo-grid-messages>
         </kendo-grid>
     </div>
 </div>

@@ -3,6 +3,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SearchGridComponent } from './components/search-grid/search-grid.component';
 import { SourceSettingsComponent } from './components/source-settings/source-settings.component';
+import { DisplaySettingsComponent } from './components/display-settings/display-settings.component';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,7 +17,8 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { GridModule } from '@progress/kendo-angular-grid';
-import { DisplaySettingsComponent } from './components/display-settings/display-settings.component';
+import { CustomDataBindingDirective } from './directives/custom-data-binding.directive';
+
 
 @NgModule({
     declarations: [
@@ -25,7 +27,9 @@ import { DisplaySettingsComponent } from './components/display-settings/display-
         SidebarComponent,
         SearchGridComponent,
         SourceSettingsComponent,
-        DisplaySettingsComponent
+        DisplaySettingsComponent,
+        CustomDataBindingDirective
+
     ],
     imports: [
         BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GRID_DATA } from 'src/app/models/search-grid-data';
 import { GridDataResult, PageChangeEvent } from "@progress/kendo-angular-grid";
+import { FetchDataService } from '../../services/fetch-data.service';
 
 @Component({
     selector: 'app-search-grid',
@@ -11,41 +12,39 @@ export class SearchGridComponent implements OnInit {
 
     defaultDate: Date = new Date();
     gridData!: GridDataResult;
-    pageSize!: number;
-    skip: number = 0;
-    items: any[] = GRID_DATA;
+    pageSize: number = 10;
+    pageSizes: number[] = [10, 15, 20];
+    page: number = 0;
+    loading: boolean = false;
+    items!: any[];
 
-    constructor() { }
+    constructor(private fetchDataService: FetchDataService) { }
 
     ngOnInit(): void {
-        this.checkHeight();
         this.loadItems();
-
-        window.addEventListener('resize', () => {
-            this.checkHeight();
-            this.loadItems();
-        });
-    }
-
-    checkHeight(): void {
-        if (window.innerHeight > 1000) {
-            this.pageSize = 4;
-        } else if (window.innerHeight > 800) {
-            this.pageSize = 3;
-        } else {
-            this.pageSize = 2;
-        }
     }
 
     loadItems(): void {
+        this.loading = true;
+        this.fetchDataService.getSearchGridData().subscribe(res => {
+            this.items = res;
+        })
+
         this.gridData = {
-            data: this.items.slice(this.skip, this.skip + this.pageSize),
+            data: this.items.slice(
+                this.page * this.pageSize, 
+                (this.page + 1) * this.pageSize
+            ),
             total: this.items.length
         }
+        console.log(this.gridData)
+        setTimeout(() => {
+            this.loading = false;
+        }, 600);
     }
 
     pageChange(event: PageChangeEvent): void {
-        this.skip = event.skip;
+        this.page = event.skip;
         this.loadItems();
     }
 }

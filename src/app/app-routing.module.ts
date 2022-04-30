@@ -5,6 +5,7 @@ import { SourceSettingsComponent } from './components/source-settings/source-set
 import { DisplaySettingsComponent } from './components/display-settings/display-settings.component';
 
 const routes: Routes = [
+    { path: '', redirectTo: 'historyDiscover', pathMatch: 'full' },
     { path: 'historyDiscover', component: SearchGridComponent },
     { path: 'report', redirectTo: 'report/sourceSettings', pathMatch: 'full' },
     { path: 'report/sourceSettings', component: SourceSettingsComponent },
